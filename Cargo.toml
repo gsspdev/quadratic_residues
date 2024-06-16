@@ -11,5 +11,4 @@ license = "MIT"
 keywords = ["number theory", "mathematics", "algebra"]
 categories = ["mathematics"]
 
-
 [dependencies]
