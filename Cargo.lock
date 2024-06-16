@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "quadratic_residue"
+name = "quadratic_residues"
 version = "0.1.0"
