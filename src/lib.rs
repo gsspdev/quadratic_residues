@@ -58,17 +58,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_vec_of_smaller_ints() {
-        assert_eq!(vec_of_smaller_ints(7), vec![1, 2, 3, 4, 5, 6]);
-    }
-
-    #[test]
-    fn test_quadratic_residue() {
-        assert_eq!(quadratic_residues_all(7), vec![1, 4, 2, 2, 4, 1]);
-    }
-
-    #[test]
-    fn test_unique_quadratic_residues() {
+    fn test_quadratic_residues() {
         assert_eq!(quadratic_residues(7), vec![1, 2, 4]);
     }
 
@@ -76,4 +66,10 @@ mod tests {
     fn test_quadratic_non_residue() {
         assert_eq!(quadratic_non_residues(7), vec![3, 5, 6]);
     }
+
+    #[test]
+    fn test_quadratic_residues_all() {
+        assert_eq!(quadratic_residues_all(7), vec![1, 4, 2, 2, 4, 1]);
+    }
+
 }

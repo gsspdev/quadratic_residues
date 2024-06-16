@@ -24,7 +24,7 @@ cargo add quadratic_residues
 
 ```toml
 [dependencies]
-quadratic_residues = "0.1.3"
+quadratic_residues = "0.1.4"
 ```
 
 ### To use the crate in your project:
