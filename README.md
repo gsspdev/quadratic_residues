@@ -2,7 +2,7 @@
 
 ##  Examples:
 
-###  use quadratic_residue::{ quadratic_residues, quadratic_non_residues, quadratic_residues_all };
+###  use quadratic_residues::{ quadratic_residues, quadratic_non_residues, quadratic_residues_all };
 
 ### quadratic_residues(7) => [1, 2, 4]
 ### quadratic_non_residues(7) => [3, 5, 6]
