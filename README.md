@@ -2,13 +2,15 @@
 
 ## Description
 
-### From Wikipedia: [Quadratic Residue](https://en.wikipedia.org/wiki/Quadratic_residue)
 
-"In number theory, an integer q is called a quadratic residue modulo n if it is congruent to a perfect square modulo n; i.e., if there exists an integer x such that:
-\[ x^2 \equiv q \pmod{n} \]
+"In number theory, an integer q is called a quadratic residue modulo n if it is congruent to a perfect square modulo n; i.e., if there exists an integer x such that: $$x^2 \equiv q \pmod{n}$$
 Otherwise, q is called a quadratic nonresidue modulo n.
 
 Originally an abstract mathematical concept from the branch of number theory known as modular arithmetic, quadratic residues are now used in applications ranging from acoustical engineering to cryptography and the factoring of large numbers."
+
+Source: https://en.wikipedia.org/wiki/Quadratic_residue
+
+For a quick overview of quadratic residues I recommend [this](https://www.youtube.com/watch?v=aBn7BaRxu2g 'Number Theory | Quadratic Residues: Definition and Examples') video from [Michael Penn](https://www.youtube.com/@MichaelPennMath '@MichaelPennMath').
 
 ## Usage
 
@@ -22,7 +24,7 @@ cargo add quadratic_residues
 
 ```toml
 [dependencies]
-quadratic_residues = "0.1.2"
+quadratic_residues = "0.1.3"
 ```
 
 ### To use the crate in your project:
