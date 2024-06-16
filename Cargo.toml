@@ -1,0 +1,7 @@
+[package]
+name = "quadratic_residue"
+version = "0.1.0"
+authors = ["Benjamin Hampikian <dev@gssp.io>"]
+edition = "2021"
+
+[dependencies]
