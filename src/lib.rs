@@ -32,6 +32,7 @@ pub fn quadratic_non_residues(number: i32) -> Vec<i32> {
 }
 
 /// Returns the quadratic residues of an integer, including duplicates pub fn quadratic_residues_all(number: i32) -> Vec<i32> {
+pub fn quadratic_residues_all(number: i32) -> Vec<i32> {
     let mut v = vec_of_smaller_ints(number);
 
     for x in v.iter_mut() {
