@@ -7,12 +7,10 @@
 /// quadratic_residues(7) => [1, 2, 4]
 /// quadratic_non_residues(7) => [3, 5, 6]
 /// quadratic_residues_all(7) => [1, 4, 2, 2, 4, 1]
-
 use std::collections::HashSet;
 
-
 /// Returns unique quadratic residues of an integer
-fn quadratic_residues(number: i32) -> Vec<i32> {
+pub fn quadratic_residues(number: i32) -> Vec<i32> {
     let mut quadratic_residues = quadratic_residues_all(number);
     quadratic_residues = get_unique(quadratic_residues);
     quadratic_residues.sort();
@@ -20,7 +18,7 @@ fn quadratic_residues(number: i32) -> Vec<i32> {
 }
 
 /// Returns the quadratic non-residues of an integer
-fn quadratic_non_residues(number: i32) -> Vec<i32> {
+pub fn quadratic_non_residues(number: i32) -> Vec<i32> {
     let quadratic_residues = quadratic_residues_all(number);
     let mut quadratic_non_residues: Vec<i32> = vec![];
 
@@ -33,8 +31,7 @@ fn quadratic_non_residues(number: i32) -> Vec<i32> {
     quadratic_non_residues
 }
 
-/// Returns the quadratic residues of an integer, including duplicates
-fn quadratic_residues_all(number: i32) -> Vec<i32> {
+/// Returns the quadratic residues of an integer, including duplicates pub fn quadratic_residues_all(number: i32) -> Vec<i32> {
     let mut v = vec_of_smaller_ints(number);
 
     for x in v.iter_mut() {
