@@ -24,12 +24,6 @@ pub mod get_residues {
         non_residues
     }
 
-    pub fn include_duplicates(number: i32) -> Vec<i32> {
-        let all_vec = all(number);
-        all_vec
-    }
-
-
     /// Returns the quadratic residues of an integer, including duplicates pub fn quadratic_residues_all(number: i32) -> Vec<i32> {
     pub fn all(number: i32) -> Vec<i32> {
         let mut v = ints_less_than_n(number);
