@@ -1,4 +1,5 @@
 extern crate core;
+mod tests;
 
 pub mod get_residues {
     use std::collections::HashSet;
@@ -44,20 +45,3 @@ pub mod get_residues {
         unique_vec
     }
 }
-
-#[cfg(test)]
-
-    #[test]
-    fn test_get_residues() {
-        assert_eq!(get_residues::default(7), vec![1, 2, 4]);
-    }
-
-    #[test]
-    fn test_get_residues_non() {
-        assert_eq!(get_residues::non(7), vec![3, 5, 6]);
-    }
-
-    #[test]
-    fn test_get_residues_include_duplicates() {
-        assert_eq!(get_residues::all(7), vec![1, 4, 2, 2, 4, 1]);
-    }
