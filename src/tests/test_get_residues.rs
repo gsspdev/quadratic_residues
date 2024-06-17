@@ -1,5 +1,4 @@
 // tests/integration_test.rs
-use crate::get_residues;
 pub mod test_get_residues {
     use crate::get_residues;
 

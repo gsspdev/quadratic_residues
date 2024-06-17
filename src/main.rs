@@ -1,7 +1,6 @@
 use quadratic_residues::*;
-use quadratic
-mod lib::*;
-mod tests::test_get_residues;
+mod lib;
+mod tests;
 
 fn main () {
     test_get_residues::test_get_residues_default();
