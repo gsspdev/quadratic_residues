@@ -1,8 +1,8 @@
 extern crate core;
 mod tests;
 
-pub mod mod_absolute {
-    pub fn mod_abs(x: i32, r: i32) -> i32 {
+pub mod pos_mod {
+    pub fn abs_mod(x: i32, r: i32) -> i32 {
         let abs_x = x.abs();
         let abs_r = r.abs();
 
