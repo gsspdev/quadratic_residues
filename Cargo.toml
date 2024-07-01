@@ -12,3 +12,4 @@ keywords = ["algebra", "number-theory", "mathematics", "modular-arithmetic", "qu
 categories = ["mathematics"]
 
 [dependencies]
+euclid = "0.22.10"
