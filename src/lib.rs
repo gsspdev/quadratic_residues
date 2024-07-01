@@ -1,6 +1,19 @@
 extern crate core;
 mod tests;
 
+pub mod mod_absolute {
+    pub fn mod_abs(x: i32, r: i32) -> i32 {
+        let abs_x = x.abs();
+        let abs_r = r.abs();
+
+        let mut result = abs_x % abs_r;
+        if result < 0 {
+            result += r;
+        }
+        result
+    }
+}
+
 pub mod get_residues {
     use std::collections::HashSet;
 
