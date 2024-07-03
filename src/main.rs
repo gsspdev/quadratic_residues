@@ -19,15 +19,6 @@ fn main() {
    let res_27fresult = &res_27false.get_residues();
    println!("{:?}", res_27tresult);
    println!("{:?}", res_27fresult);
-   // println!("{:?}", get_residues(27).collect());
-   // let res_21 = get_residues::default(21);
-   // let res_53 = get_residues::default(53);
-   // let res_47 = get_residues::default(47);
-   // let res_48 = get_residues::default(48);
-   // println!("{:?}", res_21);
-   // println!("{:?}", res_53);
-   // println!("{:?}", res_47[]);
-   // println!("{:?}", res_48);
 }
 
 

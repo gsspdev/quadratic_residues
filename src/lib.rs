@@ -44,7 +44,16 @@ pub mod quad_res {
         }
     }
 
-    fn get_residues_all(p: i32, all: bool) -> Vec<i32> {
+    
+
+    impl Residues for (i32, bool) {
+        fn get_residues(&self) -> Vec<i32> {
+            let (p, all) = *self;
+            get_residues_all(p, all)
+        }
+    }
+    
+    pub fn get_residues_all(p: i32, all: bool) -> Vec<i32> {
         let mut v: Vec<i32> = (1..p).collect();
         for x in v.iter_mut() {
             *x = (*x * *x) % p;
@@ -55,4 +64,5 @@ pub mod quad_res {
         }
         v
     }
+    
 }
