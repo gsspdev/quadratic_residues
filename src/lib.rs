@@ -1,7 +1,3 @@
-mod tests {
-    // Add your test cases here
-}
-
 pub mod pos_mod {
     pub fn abs_mod(x: i32, r: i32) -> i32 {
         let abs_x = x.abs();
@@ -43,8 +39,6 @@ pub mod quad_res {
             get_residues_all(self.p, self.all)
         }
     }
-
-    
 
     impl Residues for (i32, bool) {
         fn get_residues(&self) -> Vec<i32> {
