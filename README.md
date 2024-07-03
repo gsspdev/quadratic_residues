@@ -1,6 +1,6 @@
 # Quadratic Residue Computation in Rust
 
-## Quadratic residues -- Overview
+## Quadratic Residues -- A Brief Overview
 
 "In number theory, an integer q is called a quadratic residue modulo n if it is congruent to a perfect square modulo n; i.e., if there exists an integer x such that: $$x^2 \equiv q \pmod{n}$$
 Otherwise, q is called a quadratic nonresidue modulo n.
@@ -11,23 +11,21 @@ Source: https://en.wikipedia.org/wiki/Quadratic_residue
 
 For a quick overview of quadratic residues I recommend [this](https://www.youtube.com/watch?v=aBn7BaRxu2g 'Number Theory | Quadratic Residues: Definition and Examples') video from [Michael Penn](https://www.youtube.com/@MichaelPennMath '@MichaelPennMath').
 
-TODO: THERE ARE KNOWN OPTIMAZATIONS FOR THIS FOR COMPUTATIONALLY INTENSIVE TASKS YET TO BE IMPLEMENTED, IF YOU ARE USING THIS LIBRARY FOR A HIGHLY INTENSIVE APPLICATION PLEASE CONSIDER USING A C OR C++ BASED LIBRARY THAT IS BETTER OPTIMIZED (OPTIMIZATIONS COMING SOON)
-
 ## Usage:
 
-### Add using cargo:
+### Add with cargo:
 
 ```bash
 cargo add quadratic_residues
 ```
-### or by editing your Cargo.toml:
+### or manually specify in Cargo.toml:
 
 ```toml
 [dependencies]
 quadratic_residues = "0.1.4"
 ```
 
-### Import with 'use' statement:
+### Import with 'use':
 ```rust
 // src/main.rs
 use quadratic_residues::{ quadratic_residues, quadratic_non_residues, quadratic_residues_all };
