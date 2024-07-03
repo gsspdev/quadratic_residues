@@ -1,4 +1,4 @@
-# A Rust crate to compute quadratic residues
+# Quadratic Residue Computation in Rust
 
 ## Quadratic residues -- Overview
 
@@ -13,23 +13,23 @@ For a quick overview of quadratic residues I recommend [this](https://www.youtub
 
 TODO: THERE ARE KNOWN OPTIMAZATIONS FOR THIS FOR COMPUTATIONALLY INTENSIVE TASKS YET TO BE IMPLEMENTED, IF YOU ARE USING THIS LIBRARY FOR A HIGHLY INTENSIVE APPLICATION PLEASE CONSIDER USING A C OR C++ BASED LIBRARY THAT IS BETTER OPTIMIZED (OPTIMIZATIONS COMING SOON)
 
-## Using this crate:
+## Usage:
 
-### Add the Crate to Your Project
+### Add using cargo:
 
-Using cargo:
 ```bash
 cargo add quadratic_residues
 ```
-### or add it manually to your Cargo.toml file:
+### or by editing your Cargo.toml:
 
 ```toml
 [dependencies]
 quadratic_residues = "0.1.4"
 ```
 
-### To use the crate in your project:
+### Import with 'use' statement:
 ```rust
+// src/main.rs
 use quadratic_residues::{ quadratic_residues, quadratic_non_residues, quadratic_residues_all };
 ```
 
