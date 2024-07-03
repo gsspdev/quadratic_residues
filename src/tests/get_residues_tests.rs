@@ -1,5 +1,7 @@
-// tests/integration_test.rs
-pub mod test_get_residues {
+#[cfg(test)]
+use crate::get_residues;
+#[test]
+pub mod get_residues_tests {
     use crate::get_residues;
 
     #[cfg(test)]

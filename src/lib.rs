@@ -1,4 +1,3 @@
-extern crate core;
 mod tests;
 
 pub mod pos_mod {
