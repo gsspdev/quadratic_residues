@@ -1,75 +1,62 @@
-/// Returns the quadratic residues of an integer
-///
-/// Examples:
-///
-/// use quadratic_residues::{ quadratic_residues, quadratic_non_residues, quadratic_residues_all };
-///
-/// quadratic_residues(7) => [1, 2, 4]
-/// quadratic_non_residues(7) => [3, 5, 6]
-/// quadratic_residues_all(7) => [1, 4, 2, 2, 4, 1]
-use std::collections::HashSet;
+pub mod pos_mod {
+    pub fn abs_mod(x: i32, r: i32) -> i32 {
+        let abs_x = x.abs();
+        let abs_r = r.abs();
 
-/// Returns unique quadratic residues of an integer
-pub fn quadratic_residues(number: i32) -> Vec<i32> {
-    let mut quadratic_residues = quadratic_residues_all(number);
-    quadratic_residues = get_unique(quadratic_residues);
-    quadratic_residues.sort();
-    quadratic_residues
+        let mut result = abs_x % abs_r;
+        if result < 0 {
+            result += abs_r;
+        }
+        result
+    }
 }
 
-/// Returns the quadratic non-residues of an integer
-pub fn quadratic_non_residues(number: i32) -> Vec<i32> {
-    let quadratic_residues = quadratic_residues_all(number);
-    let mut quadratic_non_residues: Vec<i32> = vec![];
+pub struct ModuloNum {
+    pub p: i32,
+    pub all: bool
+}
 
-    for x in 1..number {
-        if !quadratic_residues.contains(&x) {
-            quadratic_non_residues.push(x);
+pub mod quad_res {
+    use crate::ModuloNum;
+
+    pub trait Residues {
+        fn get_residues(&self) -> Vec<i32>;
+    }
+
+    impl Residues for i32 {
+        fn get_residues(&self) -> Vec<i32> {
+            let p = *self;
+            let mut v: Vec<i32> = (1..p).collect();
+            for x in v.iter_mut() {
+                *x = (*x * *x) % p;
+            }
+            v
         }
     }
 
-    quadratic_non_residues
-}
-
-/// Returns the quadratic residues of an integer, including duplicates pub fn quadratic_residues_all(number: i32) -> Vec<i32> {
-pub fn quadratic_residues_all(number: i32) -> Vec<i32> {
-    let mut v = vec_of_smaller_ints(number);
-
-    for x in v.iter_mut() {
-        *x = (*x * *x) % number;
+    impl Residues for ModuloNum {
+        fn get_residues(&self) -> Vec<i32> {
+            get_residues_all(self.p, self.all)
+        }
     }
 
-    return v;
-}
-
-fn vec_of_smaller_ints(n: i32) -> Vec<i32> {
-    (1..n).collect()
-}
-
-fn get_unique(vec: Vec<i32>) -> Vec<i32> {
-    let unique_only: HashSet<_> = vec.clone().drain(..).collect();
-    let mut unique_vec: Vec<_> = unique_only.into_iter().collect();
-    unique_vec.sort();
-    unique_vec
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_quadratic_residues() {
-        assert_eq!(quadratic_residues(7), vec![1, 2, 4]);
+    impl Residues for (i32, bool) {
+        fn get_residues(&self) -> Vec<i32> {
+            let (p, all) = *self;
+            get_residues_all(p, all)
+        }
     }
-
-    #[test]
-    fn test_quadratic_non_residue() {
-        assert_eq!(quadratic_non_residues(7), vec![3, 5, 6]);
+    
+    pub fn get_residues_all(p: i32, all: bool) -> Vec<i32> {
+        let mut v: Vec<i32> = (1..p).collect();
+        for x in v.iter_mut() {
+            *x = (*x * *x) % p;
+        }
+        v.sort_unstable();
+        if !all {
+            v.dedup();
+        }
+        v
     }
-
-    #[test]
-    fn test_quadratic_residues_all() {
-        assert_eq!(quadratic_residues_all(7), vec![1, 4, 2, 2, 4, 1]);
-    }
-
+    
 }
