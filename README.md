@@ -12,6 +12,8 @@ Source: https://en.wikipedia.org/wiki/Quadratic_residue
 
 For a quick overview of quadratic residues I recommend [this](https://www.youtube.com/watch?v=aBn7BaRxu2g 'Number Theory | Quadratic Residues: Definition and Examples') video from [Michael Penn](https://www.youtube.com/@MichaelPennMath '@MichaelPennMath').
 
+TODO: THERE ARE KNOWN OPTIMAZATIONS FOR THIS FOR COMPUTATIONALLY INTENSIVE TASKS YET TO BE IMPLEMENTED, IF YOU ARE USING THIS LIBRARY FOR A HIGHLY INTENSIVE APPLICATION PLEASE CONSIDER USING A C OR C++ BASED LIBRARY THAT IS BETTER OPTIMIZED (OPTIMIZATIONS COMING SOON)
+
 ## Usage
 
 ### Add the Crate to Your Project
