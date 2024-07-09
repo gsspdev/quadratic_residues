@@ -1,18 +1,6 @@
+#[allow(unused)]
 mod tests;
 mod utilities;
-
-pub mod pos_mod {
-    pub fn abs_mod(x: i32, r: i32) -> i32 {
-        let abs_x = x.abs();
-        let abs_r = r.abs();
-
-        let mut result = abs_x % abs_r;
-        if result < 0 {
-            result += r;
-        }
-        result
-    }
-}
 
 pub mod get_residues {
     use crate::utilities::get_unique;  // removes duplicates from vector
@@ -20,16 +8,22 @@ pub mod get_residues {
 
     /// Gets quadratic residues
     pub fn default(number: i32) -> Vec<i32> {
-        let mut default_vector = all(number);
+        let n = number.abs();
+        let mut default_vector = all(n);
         default_vector = get_unique(default_vector);
         default_vector
     }
 
     /// Gets non-residues (FAILING TEST)
     pub fn non(number: i32) -> Vec<i32> {
-        let non_quadratic_residues = ints_less_than_n(number);
-        let residues = non_quadratic_residues.iter().map(|x| x * x).collect();
-        residues
+        let n = number.abs();
+        let vector: Vec<i32> = ints_less_than_n(n) ;
+        let residues: Vec<i32> = default(n);
+        
+        let non_residues: Vec<i32> =  vector.into_iter()
+                                            .filter(|x| !residues.contains(x))
+                                            .collect();
+        non_residues
     }
 
     /// Gets residues, includes duplicates
@@ -48,12 +42,10 @@ pub mod get_residues {
 mod testing {
     use super::get_residues::{all, default, non};
     use default as get_residues;
-    // use non as get_non_residues;
-    // use all as get_all_residues;
 
     #[test]
     fn default_test() {
         assert_eq!(get_residues(27), vec![0, 1, 4, 7, 9, 10, 13, 16, 19, 22, 25]);
     }
-        // non_residuesk
+
 }

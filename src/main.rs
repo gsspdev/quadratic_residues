@@ -5,7 +5,7 @@ use default as get_residues;
 use non as get_non_residues;
 
 pub fn main() {
-    let x = 27;
+    let x = 7;
     let qd = get_residues(x);
     println!("default: {:?}", qd);
     let qn = get_non_residues(x);
