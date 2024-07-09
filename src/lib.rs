@@ -1,4 +1,5 @@
 mod tests;
+mod utilities;
 
 pub mod pos_mod {
     pub fn abs_mod(x: i32, r: i32) -> i32 {
@@ -14,30 +15,24 @@ pub mod pos_mod {
 }
 
 pub mod get_residues {
-    use std::collections::HashSet;
+    use crate::utilities::get_unique;  // removes duplicates from vector
+    use crate::utilities::ints_less_than_n;  // generates vector of ints < n
 
-    /// Returns unique quadratic residues of an integer
+    /// Gets quadratic residues
     pub fn default(number: i32) -> Vec<i32> {
         let mut default_vector = all(number);
         default_vector = get_unique(default_vector);
         default_vector
     }
 
-    /// Returns the quadratic non-residues of an integer
+    /// Gets non-residues (FAILING TEST)
     pub fn non(number: i32) -> Vec<i32> {
-        let quadratic_residues = ints_less_than_n(number);
-        let mut non_residues: Vec<i32> = vec![];
-
-        for x in 1..number {
-            if !quadratic_residues.contains(&x) {
-                non_residues.push(x);
-            }
-        }
-
-        non_residues
+        let non_quadratic_residues = ints_less_than_n(number);
+        let residues = non_quadratic_residues.iter().map(|x| x * x).collect();
+        residues
     }
 
-    /// Returns the quadratic residues of an integer, including duplicates pub fn quadratic_residues_all(number: i32) -> Vec<i32> {
+    /// Gets residues, includes duplicates
     pub fn all(number: i32) -> Vec<i32> {
         let mut v = ints_less_than_n(number);
         for x in v.iter_mut() {
@@ -46,14 +41,19 @@ pub mod get_residues {
         return v;
     }
 
-    fn ints_less_than_n(n: i32) -> Vec<i32> {
-        (1..n).collect()
-    }
+}
 
-    fn get_unique(vec: Vec<i32>) -> Vec<i32> {
-        let unique_only: HashSet<_> = vec.clone().drain(..).collect();
-        let mut unique_vec: Vec<_> = unique_only.into_iter().collect();
-        unique_vec.sort();
-        unique_vec
+#[allow(unused)]
+#[cfg(test)]
+mod testing {
+    use super::get_residues::{all, default, non};
+    use default as get_residues;
+    // use non as get_non_residues;
+    // use all as get_all_residues;
+
+    #[test]
+    fn default_test() {
+        assert_eq!(get_residues(27), vec![0, 1, 4, 7, 9, 10, 13, 16, 19, 22, 25]);
     }
+        // non_residuesk
 }
