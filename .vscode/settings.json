@@ -1,0 +1,13 @@
+{
+  "breadcrumbs.filePath": "on",
+  "explorer.autoReveal": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.decorations.colors": true,
+  "explorer.decorations.badges": false,
+  "testing.showCoverageInExplorer": true,
+  "rust-analyzer.testExplorer": true,
+  "explorer.compactFolders": false,
+  "editor.hideCursorInOverviewRuler": true
+}
