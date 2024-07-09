@@ -1,20 +1,40 @@
+use crate::utilities::{get_unique, ints_less_than_n};
+
 #[allow(unused)]
 mod tests;
 mod utilities;
+mod split_vector;
 
 pub mod get_residues {
     use crate::utilities::get_unique;  // removes duplicates from vector
     use crate::utilities::ints_less_than_n;  // generates vector of ints < n
 
+    // Although this may have more optimizations,
+    // this should be faster than the previous implementation
+    // which has been renaimed to slow. There is an n/2 optimization
+    // by only computing the first half of the vector.
+    // The last half mirrors the first half.
+    pub fn optimized_but_failing(number: i32) -> Vec<i32> {
+        let n = number.abs();
+        let ints_vec = ints_less_than_n(n);
+        let midpoint = ints_vec.len() / 2;
+        let first_half = ints_vec[..midpoint].to_vec();
+        let mut res = first_half.clone();
+
+        res.iter_mut().map(|x| *x = (*x * *x) % number).for_each(drop);
+        res.sort();
+        res
+
+    }
     /// Gets quadratic residues
     pub fn default(number: i32) -> Vec<i32> {
         let n = number.abs();
-        let mut default_vector = all(n);
-        default_vector = get_unique(default_vector);
-        default_vector
+        let mut residues = all(n);
+        residues = get_unique(residues);
+        residues
     }
 
-    /// Gets non-residues (FAILING TEST)
+    /// Gets non-residues
     pub fn non(number: i32) -> Vec<i32> {
         let n = number.abs();
         let vector: Vec<i32> = ints_less_than_n(n) ;
@@ -27,6 +47,8 @@ pub mod get_residues {
     }
 
     /// Gets residues, includes duplicates
+    // There is an n/2 optimization here, using default,
+    // and the mirrored output of default.
     pub fn all(number: i32) -> Vec<i32> {
         let mut v = ints_less_than_n(number);
         for x in v.iter_mut() {
