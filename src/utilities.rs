@@ -28,6 +28,7 @@ pub mod pos_mod {
 #[cfg(test)]
 mod utilites_tests {
     use super::*;
+    use super::pos_mod::abs_mod;
 
     #[test]
     pub fn ints_less_than_n_test() {
@@ -40,7 +41,17 @@ mod utilites_tests {
     }
 
     #[test]
-    pub fn pos_mod_test() {
+    pub fn absolute_neg_quotient_test() {
+        assert_eq!(abs_mod(-7, 5), 2);
+    }
 
+    #[test]
+    pub fn absolute_neg_remainder_test() {
+        assert_eq!(abs_mod(7, -5), 2);
+    }
+    
+    #[test]
+    pub fn absolute_neg_both_test() {
+        assert_eq!(abs_mod(-7, -5), 2);
     }
 }
