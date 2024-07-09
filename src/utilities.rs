@@ -11,24 +11,15 @@ pub fn get_unique(vec: Vec<i32>) -> Vec<i32> {
     unique_vec
 }
 
-pub mod pos_mod {
-    pub fn abs_mod(x: i32, r: i32) -> i32 {
-        let abs_x = x.abs();
-        let abs_r = r.abs();
-
-        let mut result = abs_x % abs_r;
-        if result < 0 {
-            result += r;
-        }
-        result
-    }
+pub fn abs_rem(div: i32, dvsr: i32) -> i32 {
+    let rem = div.abs() % dvsr.abs();
+    rem
 }
 
 #[allow(unused_imports)]
 #[cfg(test)]
 mod utilites_tests {
     use super::*;
-    use super::pos_mod::abs_mod;
 
     #[test]
     pub fn ints_less_than_n_test() {
@@ -40,18 +31,21 @@ mod utilites_tests {
         assert_eq!(get_unique(vec![2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 7]), vec![2, 3, 4, 5, 6, 7]);
     }
 
-    #[test]
-    pub fn absolute_neg_quotient_test() {
-        assert_eq!(abs_mod(-7, 5), 2);
-    }
+    mod abs_rem_tests {
+        use super::abs_rem;
+        #[test]
+        pub fn neg_div_test() {
+            assert_eq!(abs_rem(-7, 5), 2);
+        }
 
-    #[test]
-    pub fn absolute_neg_remainder_test() {
-        assert_eq!(abs_mod(7, -5), 2);
-    }
-    
-    #[test]
-    pub fn absolute_neg_both_test() {
-        assert_eq!(abs_mod(-7, -5), 2);
+        #[test]
+        pub fn neg_dvsr_test() {
+            assert_eq!(abs_rem(7, -5), 2);
+        }
+        
+        #[test]
+        pub fn neg_both_test() {
+            assert_eq!(abs_rem(-7, -5), 2);
+        }
     }
 }
