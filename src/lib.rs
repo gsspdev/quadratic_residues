@@ -1,3 +1,5 @@
+mod tests;
+
 pub mod pos_mod {
     pub fn abs_mod(x: i32, r: i32) -> i32 {
         let abs_x = x.abs();
@@ -5,58 +7,53 @@ pub mod pos_mod {
 
         let mut result = abs_x % abs_r;
         if result < 0 {
-            result += abs_r;
+            result += r;
         }
         result
     }
 }
 
-pub struct ModuloNum {
-    pub p: i32,
-    pub all: bool
-}
+pub mod get_residues {
+    use std::collections::HashSet;
 
-pub mod quad_res {
-    use crate::ModuloNum;
-
-    pub trait Residues {
-        fn get_residues(&self) -> Vec<i32>;
+    /// Returns unique quadratic residues of an integer
+    pub fn default(number: i32) -> Vec<i32> {
+        let mut default_vector = all(number);
+        default_vector = get_unique(default_vector);
+        default_vector
     }
 
-    impl Residues for i32 {
-        fn get_residues(&self) -> Vec<i32> {
-            let p = *self;
-            let mut v: Vec<i32> = (1..p).collect();
-            for x in v.iter_mut() {
-                *x = (*x * *x) % p;
+    /// Returns the quadratic non-residues of an integer
+    pub fn non(number: i32) -> Vec<i32> {
+        let quadratic_residues = ints_less_than_n(number);
+        let mut non_residues: Vec<i32> = vec![];
+
+        for x in 1..number {
+            if !quadratic_residues.contains(&x) {
+                non_residues.push(x);
             }
-            v
         }
+
+        non_residues
     }
 
-    impl Residues for ModuloNum {
-        fn get_residues(&self) -> Vec<i32> {
-            get_residues_all(self.p, self.all)
-        }
-    }
-
-    impl Residues for (i32, bool) {
-        fn get_residues(&self) -> Vec<i32> {
-            let (p, all) = *self;
-            get_residues_all(p, all)
-        }
-    }
-    
-    pub fn get_residues_all(p: i32, all: bool) -> Vec<i32> {
-        let mut v: Vec<i32> = (1..p).collect();
+    /// Returns the quadratic residues of an integer, including duplicates pub fn quadratic_residues_all(number: i32) -> Vec<i32> {
+    pub fn all(number: i32) -> Vec<i32> {
+        let mut v = ints_less_than_n(number);
         for x in v.iter_mut() {
-            *x = (*x * *x) % p;
+            *x = (*x * *x) % number;
         }
-        v.sort_unstable();
-        if !all {
-            v.dedup();
-        }
-        v
+        return v;
     }
-    
+
+    fn ints_less_than_n(n: i32) -> Vec<i32> {
+        (1..n).collect()
+    }
+
+    fn get_unique(vec: Vec<i32>) -> Vec<i32> {
+        let unique_only: HashSet<_> = vec.clone().drain(..).collect();
+        let mut unique_vec: Vec<_> = unique_only.into_iter().collect();
+        unique_vec.sort();
+        unique_vec
+    }
 }
