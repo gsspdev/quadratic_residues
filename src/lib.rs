@@ -1,13 +1,10 @@
-use crate::utilities::{get_unique, ints_less_than_n};
-
 #[allow(unused)]
 mod tests;
 mod utilities;
-mod split_vector;
 
 pub mod get_residues {
-    use crate::utilities::get_unique;  // removes duplicates from vector
-    use crate::utilities::ints_less_than_n;  // generates vector of ints < n
+    // use crate::utilities::get_unique;  // removes duplicates from vector
+    use crate::utilities::ints_less_than_n; // generates vector of ints < n
 
     // Although this may have more optimizations,
     // this should be faster than the previous implementation
@@ -21,28 +18,31 @@ pub mod get_residues {
         let first_half = ints_vec[..midpoint].to_vec();
         let mut res = first_half.clone();
 
-        res.iter_mut().map(|x| *x = (*x * *x) % number).for_each(drop);
+        res.iter_mut()
+            .map(|x| *x = (*x * *x) % number)
+            .for_each(drop);
         res.sort();
         res
-
     }
     /// Gets quadratic residues
     pub fn default(number: i32) -> Vec<i32> {
         let n = number.abs();
         let mut residues = all(n);
-        residues = get_unique(residues);
+        residues.sort();
+        residues.dedup();
         residues
     }
 
     /// Gets non-residues
     pub fn non(number: i32) -> Vec<i32> {
         let n = number.abs();
-        let vector: Vec<i32> = ints_less_than_n(n) ;
+        let vector: Vec<i32> = ints_less_than_n(n);
         let residues: Vec<i32> = default(n);
-        
-        let non_residues: Vec<i32> =  vector.into_iter()
-                                            .filter(|x| !residues.contains(x))
-                                            .collect();
+
+        let non_residues: Vec<i32> = vector
+            .into_iter()
+            .filter(|x| !residues.contains(x))
+            .collect();
         non_residues
     }
 
@@ -56,7 +56,6 @@ pub mod get_residues {
         }
         return v;
     }
-
 }
 
 #[allow(unused)]
@@ -67,7 +66,9 @@ mod testing {
 
     #[test]
     fn default_test() {
-        assert_eq!(get_residues(27), vec![0, 1, 4, 7, 9, 10, 13, 16, 19, 22, 25]);
+        assert_eq!(
+            get_residues(27),
+            vec![0, 1, 4, 7, 9, 10, 13, 16, 19, 22, 25]
+        );
     }
-
 }
