@@ -1,43 +1,34 @@
+pub trait Splittable<T> {}
+
 pub struct SplitVec {
     first_half: Vec<i32>,
-    last_half: Vec<i32>
+    last_half: Vec<i32>,
 }
 
 impl SplitVec {
-
-    pub fn get_middle(vec: Vec<i32>) -> usize {
-        let len = vec.len();
-        let mid = len / 2;
-        mid
+    fn new<T>(first_half: Vec<T>, last_half: Vec<T>) -> Self {
+        Self { first_half, last_half }
     }
-
-    pub fn get_first_halve(vec: Vec<i32>) -> Vec<i32> {
-        let mid: usize = Self::get_middle(vec.clone());
-        let first_halve = vec[..mid].to_vec();
-        first_halve
-
-    }
-
-    pub fn get_last_halve(vec: Vec<i32>) -> Vec<i32> {
-        let mid = Self::get_middle(vec.clone());
-        return vec[mid..].to_vec();
-
-    }
-
-    // pub fn halve_vec(vec: Vec<i32>) -> SplitVec {
-    //     let or = vec.clone();
-    //     let len = vec.len();
-    //     let mid = len / 2; // let mid = get_middle(vec);
-
-    //     let first = vec[..mid].to_vec();
-    //     let last = vec[mid..].to_vec();
-
-    //     SplitVec {
-    //         first_half: first,
-    //         last_half: last
-    //     }
-    // }
 }
+
+impl Splittable for Vec<i32> {
+    pub fn new() -> SplitVec {
+        SplitVec {
+            first_half: first,
+            last_half: last
+        }
+    }
+
+    fn get_vec_middle(&self) -> usize { self.len() / 2 }
+    fn split_vec(&self, vec: Vec<i32>) -> SplitVec {
+        let mid = Self::get_vec_middle(&self);
+        SplitVec::new(vec[..mid].to_vec(), vec[mid..].to_vec())
+    }
+
+    fn get_first_halve(split_vecs :SplitVec) -> Vec<i32> { split_vecs.first_half }
+    fn get_last_halve(split_vecs: SplitVec) -> Vec<i32> { split_vecs.last_half }
+}
+
 
 #[allow(unused)]
 #[cfg(test)]

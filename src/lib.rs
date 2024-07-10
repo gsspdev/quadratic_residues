@@ -1,11 +1,12 @@
+#[allow(unused_imports)]
 use crate::utilities::{get_unique, ints_less_than_n};
 
-#[allow(unused)]
 mod tests;
 mod utilities;
 mod split_vector;
 
 pub mod get_residues {
+    use itertools::Itertools;
     use crate::utilities::get_unique;  // removes duplicates from vector
     use crate::utilities::ints_less_than_n;  // generates vector of ints < n
 
@@ -38,11 +39,9 @@ pub mod get_residues {
     pub fn non(number: i32) -> Vec<i32> {
         let n = number.abs();
         let vector: Vec<i32> = ints_less_than_n(n) ;
-        let residues: Vec<i32> = default(n);
+        let _residues: Vec<i32> = default(n);
         
-        let non_residues: Vec<i32> =  vector.into_iter()
-                                            .filter(|x| !residues.contains(x))
-                                            .collect();
+        let non_residues: Vec<i32> =  vector.into_iter().sorted().dedup().collect_vec();
         non_residues
     }
 
