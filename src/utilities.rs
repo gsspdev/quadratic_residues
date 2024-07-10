@@ -16,7 +16,6 @@ pub fn abs_rem(div: i32, dvsr: i32) -> i32 {
     rem
 }
 
-
 #[allow(unused_imports)]
 #[cfg(test)]
 mod utilites_tests {
@@ -29,7 +28,10 @@ mod utilites_tests {
 
     #[test]
     pub fn get_unique_test() {
-        assert_eq!(get_unique(vec![2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 7]), vec![2, 3, 4, 5, 6, 7]);
+        assert_eq!(
+            get_unique(vec![2, 2, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 7]),
+            vec![2, 3, 4, 5, 6, 7]
+        );
     }
 
     mod abs_rem_tests {
@@ -43,7 +45,7 @@ mod utilites_tests {
         pub fn neg_dvsr_test() {
             assert_eq!(abs_rem(7, -5), 2);
         }
-        
+
         #[test]
         pub fn neg_both_test() {
             assert_eq!(abs_rem(-7, -5), 2);
