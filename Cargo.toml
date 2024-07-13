@@ -8,7 +8,14 @@ description = "A library for calculating quadratic residues of integers"
 readme = "README.md"
 repository = "https://github.com/gsspdev/quadratic_residues"
 license = "MIT"
-keywords = ["algebra", "number-theory", "mathematics", "modular-arithmetic", "quadratic-residue"]
+keywords = [
+    "algebra",
+    "number-theory",
+    "mathematics",
+    "modular-arithmetic",
+    "quadratic-residue",
+]
 categories = ["mathematics"]
 
 [dependencies]
+bacon = "2.18.2"

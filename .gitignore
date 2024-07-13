@@ -1,3 +1,5 @@
 /target
 /.idea/
+.vscode/
+.cursorignore
 .DS_Store
