@@ -1,27 +1,23 @@
-// use quadratic_residues::get_residues;
-// use crate::get_residues;
-use quadratic_residues::{quad_res::Residues, ModuloNum};
-fn main() {
-   let res_21 = 21.get_residues();
-   println!("{:?}", res_21);
+use quadratic_residues::get_residues::{default, non, optimized_but_failing, all};
+mod utilities;
 
+use default as get_residues;
+use all as get_all_residues;
+use non as get_non_residues;
+use optimized_but_failing as get_residues_optimized_but_failing;
 
-   let twentseventy: i32 = 27;
-   let res_27true = ModuloNum {
-      p: 27, 
-      all: true 
-   };
-   let res_27false = ModuloNum {
-      p: 27, 
-      all: false
-   };
-   let res_27tresult = &res_27true.get_residues();
-   let res_27fresult = &res_27false.get_residues();
-   println!("{:?}", res_27tresult);
-   println!("{:?}", res_27fresult);
+pub fn main() {
+    let x = 2141;
+
+    let qr = get_residues(x);
+    println!("default: {:?}", qr);
+
+    let qn = get_non_residues(x);
+    println!("non: {:?}", qn);
+
+    let qa = get_all_residues(x);
+    println!("all: {:?}", qa);
+
+    let qs = get_residues_optimized_but_failing(x);
+    println!("optimized but possibly failing: {:?}", qs);
 }
-
-
-
-
-
