@@ -21,19 +21,6 @@ impl SplitVec {
         return vec[mid..].to_vec();
     }
 
-    // pub fn halve_vec(vec: Vec<i32>) -> SplitVec {
-    //     let or = vec.clone();
-    //     let len = vec.len();
-    //     let mid = len / 2; // let mid = get_middle(vec);
-
-    //     let first = vec[..mid].to_vec();
-    //     let last = vec[mid..].to_vec();
-
-    //     SplitVec {
-    //         first_half: first,
-    //         last_half: last
-    //     }
-    // }
 }
 
 #[allow(unused)]
