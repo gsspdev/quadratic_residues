@@ -52,3 +52,6 @@ quadratic_residues_all(7) => [1, 4, 2, 2, 4, 1] // returns the quadratic residue
     - account for rust '%' operator's handling of negative values []
     - change naming conventions []
     - full Impl coverage of std lib integer types []
+
+
+## More to come!
