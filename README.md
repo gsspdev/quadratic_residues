@@ -21,7 +21,7 @@ cargo add quadratic_residues
 
 ```toml
 [dependencies]
-quadratic_residues = "0.1.4"
+quadratic_residues = "0.2.2"
 ```
 
 ## Examples
