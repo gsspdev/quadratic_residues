@@ -16,6 +16,3 @@ keywords = [
     "quadratic-residue",
 ]
 categories = ["mathematics"]
-
-[dependencies]
-bacon = "2.18.2"
