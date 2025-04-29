@@ -1,10 +1,11 @@
-use quadratic_residues::get_residues::{default, non, optimized_but_failing, all};
-mod utilities;
+use quadratic_residues::get_residues::{
+    get_all_residues, get_non_residues, get_residues, get_residues_optimized_but_failing,
+};
 
-use default as get_residues;
-use all as get_all_residues;
-use non as get_non_residues;
-use optimized_but_failing as get_residues_optimized_but_failing;
+// use default as get_residues
+// use all as get_all_residues;
+// use non as get_non_residues;
+// use optimized_but_failing as get_residues_optimized_but_failing;
 
 pub fn main() {
     let x = 2141;
