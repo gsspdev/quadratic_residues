@@ -17,8 +17,6 @@ keywords = [
 ]
 categories = ["mathematics"]
 
-[dependencies]
-
 [jobs.check-examples]
 command = ["cargo", "check", "--examples", "--color", "always"]
 watch = ["examples"]

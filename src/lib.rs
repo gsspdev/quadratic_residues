@@ -3,7 +3,6 @@ mod tests;
 mod utilities;
 
 pub mod get_residues {
-    // use crate::utilities::get_unique;  // removes duplicates from vector
     use crate::utilities::ints_less_than_n; // generates vector of ints < n
 
     // Although this may have more optimizations,
@@ -67,6 +66,10 @@ mod testing {
 
     #[test]
     fn default_test() {
+        assert_eq!(
+            get_residues(27),
+            vec![0, 1, 4, 7, 9, 10, 13, 16, 19, 22, 25]
+        );
         assert_eq!(
             get_residues(27),
             vec![0, 1, 4, 7, 9, 10, 13, 16, 19, 22, 25]
