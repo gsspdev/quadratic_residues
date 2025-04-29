@@ -26,18 +26,12 @@ cargo add quadratic_residues
 quadratic_residues = "0.1.4"
 ```
 
-### Import with 'use'
-
-```rust
-use quadratic_residues::{ quadratic_residues, quadratic_non_residues, quadratic_residues_all };
-```
-
 ## Examples
 
 ```rust
-quadratic_residues(7) => [1, 2, 4] // returns the quadratic residues of 7
-quadratic_non_residues(7) => [3, 5, 6] // returns the quadratic non-residues of 7
-quadratic_residues_all(7) => [1, 4, 2, 2, 4, 1] // returns the quadratic residues of 7 including duplicates
+get_residues(7) => [1, 2, 4] // returns the quadratic residues of 7
+get_non_residues(7) => [3, 5, 6] // returns the quadratic non-residues of 7
+get_all_residues(7) => [1, 4, 2, 2, 4, 1] // returns the quadratic residues of 7 including duplicates
 ```
 
 ## TODO
