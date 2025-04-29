@@ -11,8 +11,6 @@ For a quick overview of quadratic residues I recommend [this](https://www.youtub
 
 ## Usage
 
-## Usage
-
 ### Add the Crate to Your Project
 
 ```bash
